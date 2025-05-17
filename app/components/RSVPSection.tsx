@@ -19,6 +19,51 @@ export default function RSVPSection() {
     }
   };
 
+  // 숫자 입력 처리 함수 수정
+  const handleCountChange = (type: 'adult' | 'child', value: string) => {
+    // 입력이 비어있으면 0으로 설정
+    if (value === '') {
+      if (type === 'adult') {
+        setAdultCount(0);
+      } else {
+        setChildCount(0);
+      }
+      return;
+    }
+    
+    // 입력된 문자열을 숫자로 변환 (parseInt는 선행 0을 무시합니다)
+    const numValue = parseInt(value);
+    
+    // 유효한 숫자이고 0 이상인 경우에만 설정
+    if (!isNaN(numValue) && numValue >= 0) {
+      if (type === 'adult') {
+        setAdultCount(numValue);
+      } else {
+        setChildCount(numValue);
+      }
+    }
+  };
+
+  // 입력 필드 포커스 핸들러 추가
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    // 값이 0인 경우 포커스할 때 입력 필드를 비웁니다
+    if (e.target.value === '0') {
+      e.target.value = '';
+    }
+  };
+
+  // 입력 필드 블러 핸들러 추가
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>, type: 'adult' | 'child') => {
+    // 입력 필드가 비어 있으면 0으로 설정
+    if (e.target.value === '') {
+      if (type === 'adult') {
+        setAdultCount(0);
+      } else {
+        setChildCount(0);
+      }
+    }
+  };
+
   return (
     <form 
       className="backdrop-blur-md bg-opacity-10 p-8 rounded-xl border border-opacity-20"
@@ -175,10 +220,13 @@ export default function RSVPSection() {
                 -
               </button>
               <input
-                type="text"
+                type="number"
                 name="adultCount"
                 value={adultCount}
-                readOnly
+                min="0"
+                onChange={(e) => handleCountChange('adult', e.target.value)}
+                onFocus={(e) => handleFocus(e)}
+                onBlur={(e) => handleBlur(e, 'adult')}
                 className="flex-1 h-12 mx-2 text-center rounded-lg border border-opacity-20"
                 style={{
                   background: 'var(--input-background)',
@@ -222,10 +270,13 @@ export default function RSVPSection() {
                 -
               </button>
               <input
-                type="text"
+                type="number"
                 name="childCount"
                 value={childCount}
-                readOnly
+                min="0"
+                onChange={(e) => handleCountChange('child', e.target.value)}
+                onFocus={(e) => handleFocus(e)}
+                onBlur={(e) => handleBlur(e, 'child')}
                 className="flex-1 h-12 mx-2 text-center rounded-lg border border-opacity-20"
                 style={{
                   background: 'var(--input-background)',

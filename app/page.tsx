@@ -159,10 +159,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Photo Gallery Section - 상단 여백 추가 */}
-      <section className="relative min-h-screen flex items-center justify-center pt-16 md:pt-24" style={{ background: 'var(--background-secondary)' }}>
+      {/* Photo Gallery Section - 여백 및 레이아웃 조정 */}
+      <section className="relative min-h-screen flex items-center justify-center pt-24 pb-32" style={{ background: 'var(--background-secondary)' }}>
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b" style={{
+          <div className="absolute inset-0" style={{
             background: `linear-gradient(to bottom, var(--gradient-to), var(--gradient-from))`
           }} />
         </div>
@@ -175,16 +175,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RSVP Section */}
-      <section className="relative h-screen flex items-center justify-center" style={{ background: 'var(--background)' }}>
+      {/* 섹션 사이 구분선 - 자연스러운 구분을 위해 추가 */}
+      <div className="relative z-10 h-24 w-full overflow-hidden" style={{ background: 'var(--background)' }}>
+        <div className="absolute inset-0" style={{
+          background: `linear-gradient(to bottom, var(--gradient-from) 0%, var(--background) 100%)`
+        }} />
+      </div>
+
+      {/* RSVP Section - 여백 조정 */}
+      <section className="relative min-h-screen flex items-center justify-center pt-12 pb-24" style={{ background: 'var(--background)' }}>
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0" style={{
-            background: `linear-gradient(to bottom, var(--gradient-from), var(--gradient-to))`
+            background: `linear-gradient(180deg, var(--background) 0%, var(--gradient-to) 30%, var(--gradient-from) 70%, var(--background) 100%)`
           }} />
         </div>
         <div className="relative z-10 w-full max-w-xl mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: 'var(--foreground)' }}>참석 여부</h2>
-          
           <RSVPSection />
         </div>
       </section>
