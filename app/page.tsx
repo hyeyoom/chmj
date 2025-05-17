@@ -5,6 +5,7 @@ import PhotoGallery from './components/PhotoGallery'
 import ProfileCard from './components/ProfileCard'
 import WeddingSection from './components/WeddingSection'
 import CalendarSection from './components/CalendarSection'
+import RSVPSection from './components/RSVPSection'
 
 // 환경 변수 헬퍼 함수
 const getEnvVar = (key: string, defaultValue: string): string => {
@@ -174,226 +175,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* RSVP Section */}
       <section className="relative h-screen flex items-center justify-center" style={{ background: 'var(--background)' }}>
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0" style={{
             background: `linear-gradient(to bottom, var(--gradient-from), var(--gradient-to))`
           }} />
         </div>
-        <div className="relative z-10 w-full max-w-4xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: 'var(--foreground)' }}>혼주 및 연락처</h2>
-
-          <div className="flex flex-col md:flex-row gap-16 md:gap-8">
-            {/* 신랑 측 */}
-            <div className="flex-1">
-              <div className="mb-10 text-center">
-                <h3 className="text-2xl font-semibold mb-2" style={{ color: 'var(--foreground)' }}>신랑 측</h3>
-                <div className="h-px w-12 mx-auto my-4 opacity-30" style={{ background: 'var(--foreground)' }}></div>
-              </div>
-
-              <div className="space-y-8">
-                {/* 신랑 부모님 */}
-                <div className="space-y-2">
-                  <div className="text-center opacity-80 mb-2" style={{ color: 'var(--foreground)' }}>혼주</div>
-                  <div className="flex justify-between items-center border-b border-opacity-10 pb-2" style={{ borderColor: 'var(--foreground)' }}>
-                    <span style={{ color: 'var(--foreground)' }}>아버지 {groomFatherName}</span>
-                    <a
-                      href={`tel:${groomFatherPhone}`}
-                      className="flex items-center gap-1"
-                      style={{ color: 'var(--accent-color)' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                        {groomFatherPhone}
-                    </a>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-opacity-10 pb-2" style={{ borderColor: 'var(--foreground)' }}>
-                    <span style={{ color: 'var(--foreground)' }}>어머니 {groomMotherName}</span>
-                    <a
-                      href={`tel:${groomMotherPhone}`}
-                      className="flex items-center gap-1"
-                      style={{ color: 'var(--accent-color)' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                        {groomMotherPhone}
-                    </a>
-                  </div>
-                </div>
-
-                {/* 신랑 */}
-                <div className="space-y-2 mt-6">
-                  <div className="text-center opacity-80 mb-2" style={{ color: 'var(--foreground)' }}>신랑</div>
-                  <div className="flex justify-between items-center" style={{ color: 'var(--foreground)' }}>
-                    <span>{groomName}</span>
-                    <a
-                      href={`tel:${groomPhone}`}
-                      className="flex items-center gap-1"
-                      style={{ color: 'var(--accent-color)' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                        {groomPhone}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 신부 측 */}
-            <div className="flex-1">
-              <div className="mb-10 text-center">
-                <h3 className="text-2xl font-semibold mb-2" style={{ color: 'var(--foreground)' }}>신부 측</h3>
-                <div className="h-px w-12 mx-auto my-4 opacity-30" style={{ background: 'var(--foreground)' }}></div>
-              </div>
-
-              <div className="space-y-8">
-                {/* 신부 부모님 */}
-                <div className="space-y-2">
-                  <div className="text-center opacity-80 mb-2" style={{ color: 'var(--foreground)' }}>혼주</div>
-                  <div className="flex justify-between items-center border-b border-opacity-10 pb-2" style={{ borderColor: 'var(--foreground)' }}>
-                    <span style={{ color: 'var(--foreground)' }}>아버지 {brideFatherName}</span>
-                    <a
-                      href={`tel:${brideFatherPhone}`}
-                      className="flex items-center gap-1"
-                      style={{ color: 'var(--accent-color)' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      {brideFatherPhone}
-                    </a>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-opacity-10 pb-2" style={{ borderColor: 'var(--foreground)' }}>
-                    <span style={{ color: 'var(--foreground)' }}>어머니 {brideMotherName}</span>
-                    <a
-                      href={`tel:${brideMotherPhone}`}
-                      className="flex items-center gap-1"
-                      style={{ color: 'var(--accent-color)' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      {brideMotherPhone}
-                    </a>
-                  </div>
-                </div>
-
-                {/* 신부 */}
-                <div className="space-y-2 mt-6">
-                  <div className="text-center opacity-80 mb-2" style={{ color: 'var(--foreground)' }}>신부</div>
-                  <div className="flex justify-between items-center" style={{ color: 'var(--foreground)' }}>
-                    <span>{brideName}</span>
-                    <a
-                      href={`tel:${bridePhone}`}
-                      className="flex items-center gap-1"
-                      style={{ color: 'var(--accent-color)' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                        {bridePhone}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* RSVP Section */}
-      <section className="relative h-screen flex items-center justify-center" style={{ background: 'var(--background-secondary)' }}>
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0" style={{
-            background: `linear-gradient(to bottom, var(--gradient-to), var(--gradient-from))`
-          }} />
-        </div>
-        <div className="relative z-10 max-w-2xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8 text-center" style={{ color: 'var(--foreground)' }}>참석 여부</h2>
-          <form
-            className="space-y-6 p-8 rounded-lg shadow-lg border"
-            style={{
-              background: 'var(--card-background)',
-              borderColor: 'var(--card-border)',
-              color: 'var(--foreground)'
-            }}
-          >
-            <div>
-              <label htmlFor="name" className="block text-lg font-medium mb-2">
-                이름
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                style={{
-                  background: 'var(--input-background)',
-                  borderColor: 'var(--input-border)',
-                  color: 'var(--input-text)'
-                }}
-                className="mt-1 block w-full rounded-md shadow-sm focus:border-opacity-100 focus:outline-none focus:ring-2 focus:ring-opacity-50 text-lg border"
-              />
-            </div>
-            <div>
-              <label className="block text-lg font-medium mb-2">참석 여부</label>
-              <div className="mt-2 space-x-6">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="attendance"
-                    value="yes"
-                    required
-                    className="form-radio h-5 w-5"
-                    style={{accentColor: 'var(--accent-color)'}}
-                  />
-                  <span className="ml-2 text-lg">참석</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="attendance"
-                    value="no"
-                    required
-                    className="form-radio h-5 w-5"
-                    style={{accentColor: 'var(--accent-color)'}}
-                  />
-                  <span className="ml-2 text-lg">불참석</span>
-                </label>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-lg font-medium mb-2">
-                메시지
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={3}
-                style={{
-                  background: 'var(--input-background)',
-                  borderColor: 'var(--input-border)',
-                  color: 'var(--input-text)'
-                }}
-                className="mt-1 block w-full rounded-md shadow-sm focus:border-opacity-100 focus:outline-none focus:ring-2 focus:ring-opacity-50 text-lg border"
-              />
-            </div>
-            <button
-              type="submit"
-              style={{
-                background: 'var(--button-background)',
-                color: 'var(--button-text)'
-              }}
-              className="w-full py-4 px-6 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-opacity-50 text-xl font-medium transform transition-transform hover:scale-105"
-            >
-              제출하기
-            </button>
-          </form>
+        <div className="relative z-10 w-full max-w-xl mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: 'var(--foreground)' }}>참석 여부</h2>
+          
+          <RSVPSection />
         </div>
       </section>
     </main>
