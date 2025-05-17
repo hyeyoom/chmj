@@ -3,21 +3,46 @@
 @tailwind utilities;
 
 :root {
+  /* 밝은 배경, 은은한 그린 컴포넌트 */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #333333;
+  --background-secondary: #f8f9fa;
+  --card-background: #ffffff;
+  --card-border: #e9e9e9;
+  --accent-color: #4d8b55; /* 은은한 그린 */
+  --input-background: #ffffff;
+  --input-border: #e0e0e0;
+  --input-text: #333333;
+  --button-background: #4d8b55; /* 은은한 그린 */
+  --button-hover: #3e7045;
+  --button-text: #ffffff;
+  --gradient-from: #ffffff;
+  --gradient-to: #f8f9fa;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  /* 어두운 배경, 밝은 그린 컴포넌트 */
+  --background: #121212;
+  --foreground: #e0e0e0;
+  --background-secondary: #1e1e1e;
+  --card-background: #242424;
+  --card-border: #383838;
+  --accent-color: #6bd476; /* a밝은 그린 */
+  --input-background: #2a2a2a;
+  --input-border: #404040;
+  --input-text: #e0e0e0;
+  --button-background: #5bc967; /* 밝은 그린 */
+  --button-hover: #49b655;
+  --button-text: #121212;
+  --gradient-from: #121212;
+  --gradient-to: #1e1e1e;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
